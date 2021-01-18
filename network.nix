@@ -14,20 +14,7 @@
       # nixpkgs.localSystem.system = "x86_64-linux";
       # deployment.targetHost = "test2.example.net";
 
-services.prometheus.exporters.node = {
-    enable = true;
-    enabledCollectors = [
-      "logind"
-      "systemd"
-    ];
-    disabledCollectors = [
-      "textfile"
-    ];
-    # TODO: Open firewall to prometheus host
-    # openFirewall = true;
-    # firewallFilter = "-i br0 -p tcp -m tcp --dport 9100";
-  };
-
+      services.prometheus.exporters.node = ./modules/prometheus-exporters-node.nix;
 
     };
 }
