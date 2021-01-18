@@ -1,3 +1,6 @@
+#let
+#  pkgs = import <nixpkgs> { };
+#in
 {
   test1 = {pkgs, config, ...}:
     {
@@ -8,13 +11,11 @@
 
   test2 = {pkgs, config, ...}:
     {
+      imports = [ ./modules/prometheus-exporters-node.nix ];
       services.openssh.enable = true;
       # services.httpd.enable = true;
       # environment.systemPackages = [ pkgs.lynx ];
       # nixpkgs.localSystem.system = "x86_64-linux";
       # deployment.targetHost = "test2.example.net";
-
-      services.prometheus.exporters.node = ./modules/prometheus-exporters-node.nix;
-
     };
 }
