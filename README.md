@@ -1,4 +1,4 @@
-# vm-monitor
+# nixos-cluster-monitoring-sandbox
 
 In here I learn how to set up network monitoring using Nix and Prometheus/Grafana/Loki and run experiments.
 
