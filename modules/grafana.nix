@@ -1,3 +1,6 @@
+# Grafana Server
+#
+# Scope: Beautiful plots of time series data retrieved from Prometheus
 # See https://christine.website/blog/prometheus-grafana-loki-nixos-2020-11-20
 
 { config, ... }: {
