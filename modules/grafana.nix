@@ -13,10 +13,25 @@
     addr = "0.0.0.0";
   };
 
-  # services.grafana.provision = {
-  #   enable= true;
-  #   datasources = [];
-  # };
+  services.grafana.provision = {
+    enable = true;
+    # See https://grafana.com/docs/grafana/latest/administration/provisioning/#datasources
+    datasources = [{
+      name = "Prometheus";
+      type = "prometheus";
+      access = "proxy";
+      url = "http://prometheus:9001/"; # TODO: use variables?
+      isDefault = true;
+    } {
+      name = "Loki";
+      type = "loki";
+      access = "proxy";
+      url = "http://loki:3100/"; # TODO: use variables?
+    }];
+    # See https://grafana.com/docs/grafana/latest/administration/provisioning/#dashboards
+    # dashboards = [{
+    # }];
+  };
   
   # nginx reverse proxy
   services.nginx.virtualHosts.${config.services.grafana.domain} = {
