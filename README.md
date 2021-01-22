@@ -9,7 +9,12 @@ On current NixOS, build and start VMs:
     $ nixos-build-vms network.nix
     $ ./result/bin/nixos-test-driver
 
-In the resulting REPL, enter `start_all()`.
+In the resulting REPL, enter:
+
+    start_all()
+    grafana.forward_port(2342, 2342)
+
+And open http://localhost:2342/ in your browser to view Grafana.
 
 ## Links
 

@@ -14,9 +14,9 @@ in {
     port = 9001;
     scrapeConfigs = [
       {
-        job_name = "chrysalis";
+        job_name = "node1";
         static_configs = [{
-          targets = [ "127.0.0.1:${toString nodeCfg.port}" ];
+          targets = [ "node1:${toString nodeCfg.port}" ];
         }];
       }
     ];

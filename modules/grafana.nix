@@ -7,10 +7,16 @@
   # grafana configuration
   services.grafana = {
     enable = true;
-    domain = "grafana.pele"; # TODO: what will our system be called?
+    domain = "grafana.private.storage"; # TODO: what will our system be called?
     port = 2342;
-    addr = "127.0.0.1";
+    #addr = "127.0.0.1";
+    addr = "0.0.0.0";
   };
+
+  # services.grafana.provision = {
+  #   enable= true;
+  #   datasources = [];
+  # };
   
   # nginx reverse proxy
   services.nginx.virtualHosts.${config.services.grafana.domain} = {
