@@ -4,6 +4,8 @@ nixos-cluster-monitoring-sandbox
 In here I learn how to set up network monitoring using Nix and
 Prometheus/Grafana/Loki and run experiments.
 
+I am using the `20.09 <https://nixos.org/channels/nixos-20.09>`__ NixOS channel.
+
 Usage
 -----
 
