@@ -11,6 +11,8 @@
 
   prometheus = {
     imports = [ ./modules/prometheus.nix ];
+    # TODO: What is the right place for the firewall configs?
+    # How to best also limit the hosts that can access the ports?
     networking.firewall.allowedTCPPorts = [ 9001 ];
     # deployment.targetHost = "prometheus.example.net";
   };
@@ -23,7 +25,6 @@
 
   loki = {
     imports = [ ./modules/loki.nix ];
-    # TODO: What is the right place for this?
     networking.firewall.allowedTCPPorts = [ 3100 ];
     # deployment.targetHost = "loki.example.net";
   };
