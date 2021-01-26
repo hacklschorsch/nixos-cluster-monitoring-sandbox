@@ -11,7 +11,7 @@
 
   prometheus = {
     imports = [ ./modules/prometheus.nix ];
-    networking.firewall.allowedTCPPorts = [ 9001 9100 ];
+    networking.firewall.allowedTCPPorts = [ 9001 ];
     # deployment.targetHost = "prometheus.example.net";
   };
 
