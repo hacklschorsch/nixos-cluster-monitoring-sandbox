@@ -3,25 +3,37 @@
 # Scope: Beautiful plots of time series data retrieved from Prometheus
 # See https://christine.website/blog/prometheus-grafana-loki-nixos-2020-11-20
 
-{ config, lib, ... }: {
+{ config, lib, ... }:
+
+let
+  cfg = config.services.private-storage.monitoring.grafana;
+
+in {
   options.services.private-storage.monitoring.grafana = {
     domain = lib.mkOption
     { type = lib.types.str;
       example = lib.literalExample "grafana.private.storage";
       description = "The FQDN of the Grafana host";
     };
-    pwa = lib.mkOption
+    prometheusUrl = lib.mkOption
     { type = lib.types.str;
-      example = lib.literalExample "passw0rd";
-      description = "PW";
+      example = lib.literalExample "http://prometheus:9001/";
+      default = "http://prometheus:9001/";
+      description = "The URL of the Prometheus host to access";
+    };
+    lokiUrl = lib.mkOption
+    { type = lib.types.str;
+      example = lib.literalExample "http://loki:9001/";
+      default = "http://loki:9001/";
+      description = "The URL of the Loki host to access";
     };
   };
 
   config = {
     services.grafana = {
       enable = true;
+      domain = cfg.domain;
       port = 2342;
-      security.adminPassword = config.services.private-storage.monitoring.grafana.pwa;
       #addr = "127.0.0.1";
       addr = "0.0.0.0";
     };
@@ -33,13 +45,13 @@
         name = "Prometheus";
         type = "prometheus";
         access = "proxy";
-        url = "http://prometheus:9001/"; # TODO: use variables?
+        url = cfg.prometheusUrl;
         isDefault = true;
       } {
         name = "Loki";
         type = "loki";
         access = "proxy";
-        url = "http://loki:3100/"; # TODO: use variables?
+        url = cfg.lokiUrl;
       }];
       # See https://grafana.com/docs/grafana/latest/administration/provisioning/#dashboards
       # dashboards = [{

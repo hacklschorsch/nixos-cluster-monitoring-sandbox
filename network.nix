@@ -3,7 +3,8 @@
 # Scope: Network of virtual host to develop and test monitoring setup
 
 # TODO:
-#  - create beautiful dashboards
+#  - Parametrize the module files
+#  - Create beautiful dashboards
 #  - Should we monitor the monitoring hosts as well? I think yes
 #    - DRY
 {
@@ -20,17 +21,13 @@
   "grafana" = {
     imports = [ ./modules/grafana.nix ];
     services.private-storage.monitoring.grafana = {
-      domain = "floflo";
-      pwa = "folol";
+      domain = "grafana.private.storage";
+      prometheusUrl = "http://prometheus:9001/";
+      lokiUrl = "http://loki:3100/";
     };
     networking.firewall.allowedTCPPorts = [ 80 2342 ];
-  };
-    #import ./modules/grafana.nix ({
-    #config = {
-    #  domain = "grafana.private.storage";
-    #};});
     # deployment.targetHost = "grafana.grid.private.storage";
-  #};
+  };
 
   "loki" = {
     imports = [ ./modules/loki.nix ];
