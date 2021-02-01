@@ -12,7 +12,7 @@ in {
   options.services.private-storage.monitoring.grafana = {
     domain = lib.mkOption
     { type = lib.types.str;
-      example = lib.literalExample "grafana.private.storage";
+      example = lib.literalExample "grafana.grid.private.storage";
       description = "The FQDN of the Grafana host";
     };
     prometheusUrl = lib.mkOption
@@ -34,8 +34,7 @@ in {
       enable = true;
       domain = cfg.domain;
       port = 2342;
-      #addr = "127.0.0.1";
-      addr = "0.0.0.0";
+      addr = "127.0.0.1";
     };
 
     services.grafana.provision = {
@@ -59,6 +58,7 @@ in {
     };
 
     # nginx reverse proxy
+    services.nginx.enable = true;
     services.nginx.virtualHosts.${config.services.grafana.domain} = {
       locations."/" = {
         proxyPass = "http://127.0.0.1:${toString config.services.grafana.port}";

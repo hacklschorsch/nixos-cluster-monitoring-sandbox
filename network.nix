@@ -19,13 +19,12 @@
   };
 
   "grafana" = {
+    # TODO: grafana hast no TSL support yet, add that to the reverse proxy NGINX
     imports = [ ./modules/grafana.nix ];
     services.private-storage.monitoring.grafana = {
-      domain = "grafana.private.storage";
-      prometheusUrl = "http://prometheus:9001/";
-      lokiUrl = "http://loki:3100/";
+      domain = "grafana.grid.private.storage";
     };
-    networking.firewall.allowedTCPPorts = [ 80 2342 ];
+    networking.firewall.allowedTCPPorts = [ 80 443 ];
     # deployment.targetHost = "grafana.grid.private.storage";
   };
 

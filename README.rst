@@ -21,9 +21,9 @@ In the resulting REPL, enter:
 ::
 
    start_all()
-   grafana.forward_port(2342, 2342)
+   grafana.forward_port(8080,80)
 
-And open http://localhost:2342/ in your browser to view Grafana.
+And open http://localhost:8080/ in your browser to view Grafana.
 
 Links
 -----
