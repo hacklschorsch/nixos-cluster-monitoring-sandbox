@@ -14,6 +14,8 @@
     imports = [ ./modules/prometheus.nix ];
     # TODO: What is the right place for the firewall configs?
     # How to best also limit the hosts that can access the ports?
+    # Not super simple according to this 2020/09 post
+    # https://discourse.nixos.org/t/firewall-source-destination-ips/8919/2
     networking.firewall.allowedTCPPorts = [ 9001 ];
     # deployment.targetHost = "prometheus.grid.private.storage";
   };
