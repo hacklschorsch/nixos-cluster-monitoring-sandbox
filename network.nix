@@ -19,9 +19,18 @@
 
   "grafana" = {
     imports = [ ./modules/grafana.nix ];
+    services.private-storage.monitoring.grafana = {
+      domain = "floflo";
+      pwa = "folol";
+    };
     networking.firewall.allowedTCPPorts = [ 80 2342 ];
-    # deployment.targetHost = "grafana.grid.private.storage";
   };
+    #import ./modules/grafana.nix ({
+    #config = {
+    #  domain = "grafana.private.storage";
+    #};});
+    # deployment.targetHost = "grafana.grid.private.storage";
+  #};
 
   "loki" = {
     imports = [ ./modules/loki.nix ];
