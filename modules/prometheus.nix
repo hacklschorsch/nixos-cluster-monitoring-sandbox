@@ -21,7 +21,7 @@ in {
   config = {
     services.prometheus = {
       enable = true;
-      # port = 9090; # Option only in recent (20.09?) nixpkgs, 9090 default
+      port = 9090; # Option only in recent (20.09?) nixpkgs, 9090 default
       scrapeConfigs = [
         {
           job_name = "node-exporters";
