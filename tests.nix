@@ -11,7 +11,7 @@ in {
     # on the screen.
     testScript = ''
       start_all()
-      grafana.forward_port(2342, 2342)
+      grafana.forward_port(8080, 80)
       node1.wait_for_unit("sshd")
     '';
   };
