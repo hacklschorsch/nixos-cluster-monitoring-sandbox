@@ -13,7 +13,7 @@
   "prometheus" = {
     imports = [ ./modules/prometheus.nix ];
     # TODO: What is the right place for the firewall configs?
-    # How to best also limit the hosts that can access the ports?
+    # How to best limit the hosts that can access the ports?
     # Not super simple according to this 2020/09 post
     # https://discourse.nixos.org/t/firewall-source-destination-ips/8919/2
     networking.firewall.allowedTCPPorts = [ 9001 ];
@@ -21,7 +21,7 @@
   };
 
   "grafana" = {
-    # TODO: grafana hast no TSL support yet, add that to the reverse proxy NGINX
+    # TODO: Grafana has no TLS support yet, add that to the reverse proxy NGINX
     imports = [ ./modules/grafana.nix ];
     services.private-storage.monitoring.grafana = {
       domain = "grafana.grid.private.storage";
