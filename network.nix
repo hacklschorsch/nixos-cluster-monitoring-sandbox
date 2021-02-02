@@ -17,6 +17,9 @@
     # Not super simple according to this 2020/09 post
     # https://discourse.nixos.org/t/firewall-source-destination-ips/8919/2
     networking.firewall.allowedTCPPorts = [ 9001 ];
+    services.private-storage.monitoring.prometheus = {
+      nodeExporterTargets = [ "node1" ]; # TODO: make this automatic: list of all nodes importing prometheus-node-exporter
+    };
     # deployment.targetHost = "prometheus.grid.private.storage";
   };
 
