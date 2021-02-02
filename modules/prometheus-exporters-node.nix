@@ -19,11 +19,7 @@
       "textfile"
     ];
 
-    # TODO: Open firewall only to prometheus host
-    openFirewall = true;
     port = 9100;
-    # firewallFilter = "-p tcp -m tcp --dport ${toString port}"; # TODO: why does this not work?
-    # firewallFilter = "-p tcp -m tcp --dport 9100";
   };
 }
 

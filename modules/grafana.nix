@@ -17,14 +17,14 @@ in {
     };
     prometheusUrl = lib.mkOption
     { type = lib.types.str;
-      example = lib.literalExample "http://prometheus:9001/";
-      default = "http://prometheus:9001/";
+      example = lib.literalExample "http://prometheus:9090/";
+      default = "http://prometheus:9090/";
       description = "The URL of the Prometheus host to access";
     };
     lokiUrl = lib.mkOption
     { type = lib.types.str;
-      example = lib.literalExample "http://loki:9001/";
-      default = "http://loki:9001/";
+      example = lib.literalExample "http://loki:3100/";
+      default = "http://loki:3100/";
       description = "The URL of the Loki host to access";
     };
   };

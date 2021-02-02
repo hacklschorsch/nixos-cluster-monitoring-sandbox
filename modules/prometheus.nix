@@ -21,12 +21,12 @@ in {
   config = {
     services.prometheus = {
       enable = true;
-      # port = 9001; # Option only in recent (20.09?) nixpkgs, 9001 default
+      # port = 9090; # Option only in recent (20.09?) nixpkgs, 9090 default
       scrapeConfigs = [
         {
           job_name = "node-exporters";
           static_configs = [{
-            targets = cfg.nodeExporterTargets;
+            targets = map (x: x + ":" + (toString nodeCfg.port)) cfg.nodeExporterTargets;
           }];
         }
       ];
