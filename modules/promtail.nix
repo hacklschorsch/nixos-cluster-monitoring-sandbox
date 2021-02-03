@@ -5,7 +5,7 @@
 
 { pkgs, ... }:
 let
-  configJson = {
+  promtailConfig = {
     server = {
       grpc_listen_port = 0;
       http_listen_port = 3101;
@@ -38,7 +38,7 @@ let
     }];
   };
 
-  configJsonFile = pkgs.writeText "promtail.json" (builtins.toJSON configJson);
+  promtailConfigFile = pkgs.writeText "promtail.json" (builtins.toJSON promtailConfig);
 
 in {
   systemd.services.promtail = {
@@ -46,7 +46,7 @@ in {
     wantedBy = [ "multi-user.target" ];
 
     serviceConfig = {
-      ExecStart = "${pkgs.grafana-loki}/bin/promtail --config.file ${configJsonFile}";
+      ExecStart = "${pkgs.grafana-loki}/bin/promtail --config.file ${promtailConfigFile}";
       # I have a feeling we might need those, curtesy of
       # https://github.com/input-output-hk/bitte/blob/master/modules/promtail.nix
       # Restart = "on-failure";
