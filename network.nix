@@ -40,7 +40,7 @@
       ./modules/prometheus-exporters-node.nix
       ./modules/promtail.nix
     ];
-    services.openssh.enable = true;
+    # services.openssh.enable = true; # Disabled to speed up development, was only a demo service anyway...
     # deployment.targetHost = "node1.grid.private.storage";
   };
 }
