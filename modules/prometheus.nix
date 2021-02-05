@@ -18,7 +18,9 @@ in {
     };
   };
 
-  config = {
+  config = rec {
+    networking.firewall.allowedTCPPorts = [ services.prometheus.port ];
+
     services.prometheus = {
       enable = true;
       port = 9090; # Option only in recent (20.09?) nixpkgs, 9090 default

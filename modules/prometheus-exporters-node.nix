@@ -7,6 +7,8 @@
 # See https://nixos.org/manual/nixos/stable/#module-services-prometheus-exporters
 
 {
+  config.networking.firewall.allowedTCPPorts = [ 9100 ];
+
   config.services.prometheus.exporters.node = {
     enable = true;
 

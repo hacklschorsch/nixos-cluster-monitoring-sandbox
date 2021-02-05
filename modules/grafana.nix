@@ -30,6 +30,8 @@ in {
   };
 
   config = {
+    networking.firewall.allowedTCPPorts = [ 80 443 ];
+
     services.grafana = {
       enable = true;
       domain = cfg.domain;

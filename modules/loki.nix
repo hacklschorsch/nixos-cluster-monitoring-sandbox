@@ -3,8 +3,11 @@
 # Scope: Log aggregator
 
 {
-  services.loki = {
+  config.networking.firewall.allowedTCPPorts = [ 3100 ];
+
+  config.services.loki = {
     enable = true;
+
     configuration =
       {
         auth_enabled = false;
