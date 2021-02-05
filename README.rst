@@ -36,5 +36,11 @@ This is drawing inspiration and sometimes blatantly copying from
    tests <https://github.com/NixOS/nixpkgs/blob/master/nixos/tests/prometheus.nix>`__
 -  `The Mayflower Prometheus monitoring
    configuration <https://github.com/mayflower/nixexprs/tree/master/modules/monitoring>`__
-- `The IOHK Bitte repo <https://github.com/input-output-hk/bitte/>`__
+-  `The IOHK Bitte repo <https://github.com/input-output-hk/bitte/>`__
+
+ToDo
+----
+
+-  Firewall config: open monitoring ports only to relevant hosts.
+   -  Maybe draw inspiration from `here <https://github.com/NixOS/nixpkgs/issues/19504#issuecomment-417668844>`__?
 
