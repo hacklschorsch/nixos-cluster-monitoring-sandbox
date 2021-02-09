@@ -3,7 +3,6 @@
 # Scope: Network of virtual host to develop and test monitoring setup
 
 # TODO:
-#  - Parametrize the module files
 #  - Create beautiful dashboards
 #  - Should we monitor the monitoring hosts as well? I think yes
 #    - DRY
