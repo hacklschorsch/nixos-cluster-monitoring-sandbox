@@ -6,12 +6,17 @@
 { config, lib, ... }:
 let
 
-  nodeCfg = config.services.prometheus.exporters.node;
+  exportersCfg = config.services.prometheus.exporters;
   cfg = config.services.private-storage.monitoring.prometheus;
 
 in {
   options.services.private-storage.monitoring.prometheus = {
     nodeExporterTargets = lib.mkOption {
+      type = with lib.types; listOf str;
+      example = lib.literalExample "[ node1 node2 ]";
+      description = "List of nodes (hostnames or IPs) to scrape.";
+    };
+    nginxExporterTargets = lib.mkOption {
       type = with lib.types; listOf str;
       example = lib.literalExample "[ node1 node2 ]";
       description = "List of nodes (hostnames or IPs) to scrape.";
@@ -28,7 +33,13 @@ in {
         {
           job_name = "node-exporters";
           static_configs = [{
-            targets = map (x: x + ":" + (toString nodeCfg.port)) cfg.nodeExporterTargets;
+            targets = map (x: x + ":" + (toString exportersCfg.node.port)) cfg.nodeExporterTargets;
+          }];
+        }
+        {
+          job_name = "nginx-exporters";
+          static_configs = [{
+            targets = map (x: x + ":" + (toString exportersCfg.nginx.port)) cfg.nginxExporterTargets;
           }];
         }
       ];
