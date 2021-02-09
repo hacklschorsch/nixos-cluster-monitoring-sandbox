@@ -38,9 +38,3 @@ This is drawing inspiration and sometimes blatantly copying from
    configuration <https://github.com/mayflower/nixexprs/tree/master/modules/monitoring>`__
 -  `The IOHK Bitte repo <https://github.com/input-output-hk/bitte/>`__
 
-ToDo
-----
-
--  Firewall config: open monitoring ports only to relevant hosts.
-   -  Maybe draw inspiration from `here <https://github.com/NixOS/nixpkgs/issues/19504#issuecomment-417668844>`__?
-
