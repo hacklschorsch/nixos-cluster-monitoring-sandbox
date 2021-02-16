@@ -37,6 +37,11 @@ in {
       domain = cfg.domain;
       port = 2342;
       addr = "127.0.0.1";
+
+      # All three are required to forego the user/pass prompt:
+      auth.anonymous.enable = true;
+      auth.anonymous.org_role = "Admin";
+      auth.anonymous.org_name = "Main Org.";
     };
 
     services.grafana.provision = {
