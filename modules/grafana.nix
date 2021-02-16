@@ -60,8 +60,10 @@ in {
         url = cfg.lokiUrl;
       }];
       # See https://grafana.com/docs/grafana/latest/administration/provisioning/#dashboards
-      # dashboards = [{
-      # }];
+      dashboards = [{
+        name = "provisioned";
+        options.path = ./grafana-monitoring;
+      }];
     };
 
     # nginx reverse proxy
