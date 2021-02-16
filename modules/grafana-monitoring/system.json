@@ -73,7 +73,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "VictoriaMetrics",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -215,7 +215,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "VictoriaMetrics",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -357,7 +357,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "VictoriaMetrics",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -500,7 +500,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "VictoriaMetrics",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -607,7 +607,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "VictoriaMetrics",
+      "datasource": "Prometheus",
       "description": "Bandwidth in SI units, bits per second (bps).\nPositive values are ingress, negative are egress.\nBandwidth is time averaged over a 1 minute window.",
       "fieldConfig": {
         "defaults": {
@@ -712,7 +712,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "VictoriaMetrics",
+      "datasource": "Prometheus",
       "description": "Disk activity, time averaged over a 1 minute window.\nPositive values are disk reads, negative are disk writes.",
       "fieldConfig": {
         "defaults": {
@@ -873,7 +873,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "VictoriaMetrics",
+      "datasource": "Prometheus",
       "description": "[https://deadmanssnitch.com](https://deadmanssnitch.com)\n* This panel should ALWAYS be in alerting state\n* This enables Deadman's Snitch to report when this monitoring server dies",
       "fieldConfig": {
         "defaults": {
