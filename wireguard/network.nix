@@ -4,34 +4,34 @@
 
 let
 
-  server = "node1";
-  clients = [ "node2" "node3" ];
+  server = "server";
+  clients = [ "node1" "node2" ];
   port = 54321;
 
 in {
 
-  "node1" = {
+  "server" = {
     networking.firewall.allowedUDPPorts = [ port ];
     networking.wireguard.interfaces.monitoringvpn = {
       ips = [ "192.168.42.1/24" ];
       privateKey = "cI2Rw37ihylMeDbfgH2PScJ9oFtqS1UmOkG6FfR2MWo=";
       listenPort = port;
       peers = [
-        { # node2
-          allowedIPs = [ "192.168.42.2/32" ];
+        { # node1
+          allowedIPs = [ "192.168.42.11/32" ];
           publicKey = "tZ295cvD98ixt/VH4dwPKNgHf9MuhuzsossOWBOOoGU=";
         }
-        { # node3
-          allowedIPs = [ "192.168.42.3/32" ];
+        { # node2
+          allowedIPs = [ "192.168.42.12/32" ];
           publicKey = "zDxWTejJDXRRmUiMZPC7eVSCDdyFikN9VI6cqapQ6RY=";
         }
       ];
     };
   };
 
-  "node2" = {
+  "node1" = {
     networking.wireguard.interfaces.monitoringvpn = {
-      ips = [ "192.168.42.2/24" ];
+      ips = [ "192.168.42.11/24" ];
       privateKey = "oFCEeXlRI+iU3UOgNsAOUCaLZFTEKAq4OrVAvusZYGo=";
       peers = [
         {
@@ -43,9 +43,9 @@ in {
     };
   };
 
-  "node3" = {
+  "node2" = {
     networking.wireguard.interfaces.monitoringvpn = {
-      ips = [ "192.168.42.3/24" ];
+      ips = [ "192.168.42.12/24" ];
       privateKey = "6EIThd2yJBNcUBHnpGxWgRhe2nRFJERb9tO8FH1e2nU=";
       peers = [
         {
