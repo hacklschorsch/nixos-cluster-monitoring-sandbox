@@ -1,10 +1,10 @@
 # Scope: Test the management network.
-# Usage: 
+# Usage: $ nix-build tests.nix
 
 let
 
   pkgs = import <nixpkgs> { };
-  pingCmd = "ping -c5 -W1";
+  pingCmd = "ping -c1 -W1";
 
 in {
   vm-monitoring = pkgs.nixosTest {
@@ -18,21 +18,20 @@ in {
       node2.wait_for_unit("network-online.target")
       node3.wait_for_unit("network-online.target")
 
-      # node1.wait_for_unit("wg0.service")
-      # node2.wait_for_unit("wg0.service")
-      # node3.wait_for_unit("wg0.service")
+      node1.wait_for_unit("wireguard-wg0.service")
+      node2.wait_for_unit("wireguard-wg0.service")
+      node3.wait_for_unit("wireguard-wg0.service")
+
+      node1.wait_for_unit("sys-subsystem-net-devices-wg0.device")
+      node2.wait_for_unit("sys-subsystem-net-devices-wg0.device")
+      node3.wait_for_unit("sys-subsystem-net-devices-wg0.device")
 
       # The underlying network must function
       node1.succeed("${pingCmd} node1")
       node1.succeed("${pingCmd} node2")
       node1.succeed("${pingCmd} node3")
 
-      # The wireguard server is able to ping itself and all clients
-      node1.succeed("${pingCmd} 192.168.42.1")
-      node1.succeed("${pingCmd} 192.168.42.2")
-      node1.succeed("${pingCmd} 192.168.42.3")
-
-      # The clients are able to ping themself
+      # The clients are able to ping themselves
       node2.succeed("${pingCmd} 192.168.42.2")
       node3.succeed("${pingCmd} 192.168.42.3")
 
@@ -42,6 +41,12 @@ in {
 
       # The wireguard server should not do any routing
       node2.fail("${pingCmd} 192.168.42.3")
+
+      # The wireguard server is able to ping itself and all clients
+      # IDK why, but when these tests come first, they fail.
+      node1.succeed("${pingCmd} 192.168.42.1")
+      node1.succeed("${pingCmd} 192.168.42.2")
+      node1.succeed("${pingCmd} 192.168.42.3")
     '';
   };
 }
