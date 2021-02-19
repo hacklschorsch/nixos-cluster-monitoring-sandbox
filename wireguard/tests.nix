@@ -18,13 +18,13 @@ in {
       node2.wait_for_unit("network-online.target")
       node3.wait_for_unit("network-online.target")
 
-      node1.wait_for_unit("wireguard-wg0.service")
-      node2.wait_for_unit("wireguard-wg0.service")
-      node3.wait_for_unit("wireguard-wg0.service")
+      node1.wait_for_unit("wireguard-monitoringvpn.service")
+      node2.wait_for_unit("wireguard-monitoringvpn.service")
+      node3.wait_for_unit("wireguard-monitoringvpn.service")
 
-      node1.wait_for_unit("sys-subsystem-net-devices-wg0.device")
-      node2.wait_for_unit("sys-subsystem-net-devices-wg0.device")
-      node3.wait_for_unit("sys-subsystem-net-devices-wg0.device")
+      node1.wait_for_unit("sys-subsystem-net-devices-monitoringvpn.device")
+      node2.wait_for_unit("sys-subsystem-net-devices-monitoringvpn.device")
+      node3.wait_for_unit("sys-subsystem-net-devices-monitoringvpn.device")
 
       # The underlying network must function
       node1.succeed("${pingCmd} node1")

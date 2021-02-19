@@ -12,7 +12,7 @@ in {
 
   "node1" = {
     networking.firewall.allowedUDPPorts = [ port ];
-    networking.wireguard.interfaces.wg0 = {
+    networking.wireguard.interfaces.monitoringvpn = {
       ips = [ "192.168.42.1/24" ];
       privateKey = "cI2Rw37ihylMeDbfgH2PScJ9oFtqS1UmOkG6FfR2MWo=";
       listenPort = port;
@@ -30,7 +30,7 @@ in {
   };
 
   "node2" = {
-    networking.wireguard.interfaces.wg0 = {
+    networking.wireguard.interfaces.monitoringvpn = {
       ips = [ "192.168.42.2/24" ];
       privateKey = "oFCEeXlRI+iU3UOgNsAOUCaLZFTEKAq4OrVAvusZYGo=";
       peers = [
@@ -44,7 +44,7 @@ in {
   };
 
   "node3" = {
-    networking.wireguard.interfaces.wg0 = {
+    networking.wireguard.interfaces.monitoringvpn = {
       ips = [ "192.168.42.3/24" ];
       privateKey = "6EIThd2yJBNcUBHnpGxWgRhe2nRFJERb9tO8FH1e2nU=";
       peers = [
