@@ -15,7 +15,6 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 6,
   "links": [],
   "panels": [
     {
@@ -25,9 +24,9 @@
           {
             "evaluator": {
               "params": [
-                0.1
+                0.8
               ],
-              "type": "lt"
+              "type": "gt"
             },
             "operator": {
               "type": "and"
@@ -35,7 +34,7 @@
             "query": {
               "params": [
                 "A",
-                "5m",
+                "15m",
                 "now"
               ]
             },
@@ -50,7 +49,7 @@
         "for": "5m",
         "frequency": "1m",
         "handler": 1,
-        "name": "Panel Title alert",
+        "name": "RAM filling up",
         "noDataState": "no_data",
         "notifications": []
       },
@@ -59,10 +58,10 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
+      "description": "How much RAM is in use? Relative to available system memory.",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
-          "displayName": "${__field.labels.instance}"
+          "custom": {}
         },
         "overrides": []
       },
@@ -104,7 +103,8 @@
         {
           "expr": "1 - (node_memory_MemFree_bytes + node_memory_Buffers_bytes + node_memory_Cached_bytes) / node_memory_MemTotal_bytes\r\n",
           "interval": "",
-          "legendFormat": "",
+          "intervalFactor": 4,
+          "legendFormat": "{{instance}}",
           "refId": "A"
         }
       ],
@@ -113,8 +113,8 @@
           "colorMode": "critical",
           "fill": true,
           "line": true,
-          "op": "lt",
-          "value": 0.1
+          "op": "gt",
+          "value": 0.8
         }
       ],
       "timeFrom": null,
@@ -137,11 +137,12 @@
       "yaxes": [
         {
           "$$hashKey": "object:43",
+          "decimals": null,
           "format": "percentunit",
           "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
+          "max": "1",
+          "min": "0",
           "show": true
         },
         {
@@ -160,15 +161,50 @@
       }
     },
     {
+      "alert": {
+        "alertRuleTags": {},
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                0.8
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "for": "5m",
+        "frequency": "1m",
+        "handler": 1,
+        "name": "Filesystem usage % alert",
+        "noDataState": "no_data",
+        "notifications": []
+      },
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
+      "description": "Watch filesystems filling up.",
       "fieldConfig": {
         "defaults": {
           "custom": {},
-          "displayName": "${__field.labels.instance}",
           "unit": "percentunit"
         },
         "overrides": []
@@ -209,16 +245,25 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "1 - (node_filesystem_free_bytes / node_filesystem_size_bytes) > 0.05",
+          "expr": "1 - (node_filesystem_avail_bytes / node_filesystem_size_bytes) > 0.1",
           "format": "time_series",
           "hide": false,
           "instant": false,
           "interval": "",
-          "legendFormat": "",
+          "intervalFactor": 2,
+          "legendFormat": "{{instance}} {{mountpoint}} ",
           "refId": "A"
         }
       ],
-      "thresholds": [],
+      "thresholds": [
+        {
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 0.8
+        }
+      ],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
@@ -243,8 +288,8 @@
           "format": "percentunit",
           "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
+          "max": "1",
+          "min": "0",
           "show": true
         },
         {
@@ -263,6 +308,41 @@
       }
     },
     {
+      "alert": {
+        "alertRuleTags": {},
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                1
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "for": "5m",
+        "frequency": "1m",
+        "handler": 1,
+        "name": "15 min load average alert",
+        "noDataState": "no_data",
+        "notifications": []
+      },
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -325,11 +405,20 @@
         {
           "expr": "node_load15",
           "interval": "",
+          "intervalFactor": 1,
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "thresholds": [],
+      "thresholds": [
+        {
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 1
+        }
+      ],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
@@ -349,14 +438,16 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:412",
           "format": "short",
           "label": null,
           "logBase": 1,
-          "max": null,
+          "max": "1",
           "min": null,
           "show": true
         },
         {
+          "$$hashKey": "object:413",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -376,11 +467,10 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
+      "description": "Shows most saturated network link for every node.",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
-          "displayName": "${__field.labels.instance}",
-          "unit": "decbytes"
+          "custom": {}
         },
         "overrides": []
       },
@@ -393,7 +483,7 @@
         "y": 9
       },
       "hiddenSeries": false,
-      "id": 8,
+      "id": 12,
       "legend": {
         "avg": false,
         "current": false,
@@ -420,7 +510,106 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(node_network_transmit_bytes_total[5m])",
+          "expr": "max by (instance) (((rate(node_network_transmit_bytes_total{device!=\"lo\"}[5m]) + rate(node_network_receive_bytes_total{device!=\"lo\"}[5m]))) / node_network_speed_bytes > 0)",
+          "interval": "",
+          "intervalFactor": 4,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Network throughput %",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transformations": [],
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:1100",
+          "format": "percentunit",
+          "label": null,
+          "logBase": 1,
+          "max": "1",
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:1101",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 7,
+        "x": 7,
+        "y": 9
+      },
+      "hiddenSeries": false,
+      "id": 10,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "\n",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -430,7 +619,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Network bytes",
+      "title": "Network latency",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -446,7 +635,8 @@
       },
       "yaxes": [
         {
-          "format": "decbytes",
+          "$$hashKey": "object:874",
+          "format": "short",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -454,6 +644,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:875",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -476,12 +667,12 @@
     "list": []
   },
   "time": {
-    "from": "now-30m",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "utc",
   "title": "Resources saturation overview",
   "uid": "ResSatUse",
-  "version": 9
+  "version": 1
 }
