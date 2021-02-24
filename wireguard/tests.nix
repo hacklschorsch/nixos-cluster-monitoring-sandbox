@@ -1,4 +1,4 @@
-# Scope: Test the management network.
+# Scope: Test the monitoring VPN.
 # Usage: $ nix-build tests.nix
 
 let
