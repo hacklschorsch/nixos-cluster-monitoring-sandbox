@@ -54,7 +54,7 @@
       }
     ]
   },
-  "description": "This is an dashboard for which provides CPU utilization details for multi-core systems.  It allows to easily see if overall CPU usage is high or if there are overloaded cores. Designed to be used with node-exporter >=0.16.0, as node_cpu is now renamed to node_cpu_seconds_total. forked from percona",
+  "description": "This is an dashboard for which provides CPU utilization details for multi-core systems.  It allows to easily see if overall CPU usage is high or if there are overloaded cores. Designed to be used with node-exporter >=0.16.0, as node_cpu is now renamed to node_cpu_seconds_total. by stefanenway. forked from percona",
   "editable": true,
   "gnetId": 10842,
   "graphTooltip": 0,
@@ -1560,7 +1560,8 @@
     "type": "timepicker"
   },
   "timezone": "browser",
-  "title": "CPU Utilization Details (Cores) Enway",
+  "title": "CPU Utilization Details",
   "uid": "cpuenway",
   "version": 1
 }
+
