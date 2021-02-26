@@ -230,7 +230,7 @@
         {
           "expr": "node_load15",
           "interval": "",
-          "intervalFactor": 1,
+          "intervalFactor": 5,
           "legendFormat": "",
           "refId": "A"
         }
@@ -512,7 +512,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Network throughput %",
+      "title": "Throughput %",
       "tooltip": {
         "shared": true,
         "sort": 2,
@@ -601,17 +601,23 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "\n",
+          "expr": "rate(node_disk_read_time_seconds_total{instance=~\"$hostname\", job=~\"$job\", device=~\"$device\"}[1m]) / rate(node_disk_reads_completed_total{instance=~\"$hostname\", job=~\"$job\", device=~\"$device\"}[1m]) * 1000000\n",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
+        },
+        {
+          "expr": "rate(node_disk_write_time_seconds_total{instance=~\"$hostname\", job=~\"$job\", device=~\"$device\"}[1m]) / rate(node_disk_writes_completed_total{instance=~\"$hostname\", job=~\"$job\", device=~\"$device\"}[1m]) * 1000000",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "B"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Network latency ?",
+      "title": "Latency WIP",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1083,12 +1089,12 @@
     "list": []
   },
   "time": {
-    "from": "now-5m",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "utc",
   "title": "Resources overview",
-  "uid": "ResOvervw",
+  "uid": "ResSatUsejjj",
   "version": 2
 }
