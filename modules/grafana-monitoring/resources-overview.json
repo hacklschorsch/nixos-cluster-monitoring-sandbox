@@ -16,6 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
+  "id": 9,
   "links": [],
   "panels": [
     {
@@ -38,14 +39,14 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
-      "description": "Is this what we wanted?",
+      "description": "Some of our software runs in a single thread, so this shows max CPU per core (instead of averaged over all cores)",
       "fieldConfig": {
         "defaults": {
           "custom": {}
         },
         "overrides": []
       },
-      "fill": 1,
+      "fill": 0,
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
@@ -60,7 +61,7 @@
         "current": false,
         "max": false,
         "min": false,
-        "show": true,
+        "show": false,
         "total": false,
         "values": false
       },
@@ -79,11 +80,20 @@
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
+      "targets": [
+        {
+          "expr": "1 - (max by (instance) (irate(node_cpu_seconds_total{mode=\"idle\"}[5m])))",
+          "interval": "",
+          "intervalFactor": 5,
+          "legendFormat": "{{instance}}",
+          "refId": "A"
+        }
+      ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Max CPU per core per node ?",
+      "title": "Max CPU % per core per node",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -99,14 +109,16 @@
       },
       "yaxes": [
         {
-          "format": "short",
+          "$$hashKey": "object:163",
+          "format": "percentunit",
           "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
+          "max": "1",
+          "min": "0",
           "show": true
         },
         {
+          "$$hashKey": "object:164",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -180,7 +192,7 @@
           }
         ]
       },
-      "fill": 1,
+      "fill": 0,
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
@@ -500,7 +512,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Throughput %",
+      "title": "Network throughput %",
       "tooltip": {
         "shared": true,
         "sort": 2,
@@ -599,7 +611,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Latency ?",
+      "title": "Network latency ?",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1063,7 +1075,7 @@
       }
     }
   ],
-  "refresh": "",
+  "refresh": "10s",
   "schemaVersion": 26,
   "style": "dark",
   "tags": [],
@@ -1071,12 +1083,12 @@
     "list": []
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "utc",
   "title": "Resources overview",
-  "uid": "ResSatUse",
-  "version": 1
+  "uid": "ResOvervw",
+  "version": 2
 }
