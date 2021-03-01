@@ -12,115 +12,63 @@
       }
     ]
   },
-  "description": "This dashboards shows IOPS, I/O Latency, Average Request size and throughput. Alerts are configured for latency.",
   "editable": true,
-  "gnetId": 11801,
+  "gnetId": null,
   "graphTooltip": 0,
-  "id": 8,
-  "iteration": 1614184809928,
+  "id": null,
   "links": [],
   "panels": [
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {},
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 0,
-      "fillGradient": 0,
+      "collapsed": false,
+      "datasource": null,
       "gridPos": {
-        "h": 11,
-        "w": 11,
+        "h": 1,
+        "w": 24,
         "x": 0,
         "y": 0
       },
-      "hiddenSeries": false,
-      "id": 6,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": false,
-        "show": true,
-        "sort": "avg",
-        "sortDesc": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.3.5",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "rate(node_disk_reads_completed_total{instance=~\"$hostname\", job=~\"$job\", device=~\"$device\"}[1m]) ",
-          "legendFormat": "{{instance}} - {{device}}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Read IOPS",
-      "tooltip": {
-        "shared": true,
-        "sort": 2,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "iops",
-          "label": "Reads",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "id": 13,
+      "panels": [],
+      "title": "_System",
+      "type": "row"
     },
     {
+      "alert": {
+        "alertRuleTags": {},
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                90
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "for": "5m",
+        "frequency": "1m",
+        "handler": 1,
+        "message": "CPU has been above 90% for more than 5 minutes.",
+        "name": "[System] CPU Used alert",
+        "noDataState": "alerting",
+        "notifications": []
+      },
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -133,131 +81,27 @@
         },
         "overrides": []
       },
-      "fill": 0,
+      "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 11,
-        "w": 13,
-        "x": 11,
-        "y": 0
-      },
-      "hiddenSeries": false,
-      "id": 8,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": false,
-        "show": true,
-        "sort": "avg",
-        "sortDesc": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.3.5",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "rate(node_disk_writes_completed_total{instance=~\"$hostname\", job=~\"$job\", device=~\"$device\"}[1m]) ",
-          "legendFormat": "{{instance}} - {{device}}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Write IOPS",
-      "tooltip": {
-        "shared": true,
-        "sort": 2,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "iops",
-          "label": "Reads",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {},
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 0,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 11,
-        "w": 11,
+        "h": 8,
+        "w": 12,
         "x": 0,
-        "y": 11
+        "y": 1
       },
       "hiddenSeries": false,
       "id": 2,
       "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": false,
-        "show": true,
-        "sort": "avg",
-        "sortDesc": true,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
         "total": false,
-        "values": true
+        "values": false
       },
       "lines": true,
-      "linewidth": 2,
+      "linewidth": 1,
       "nullPointMode": "null",
       "options": {
         "alertThreshold": true
@@ -267,34 +111,15 @@
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
-      "seriesOverrides": [
-        {
-          "alias": "nl-t1-mon01.tst.nan:9100 - vda - lat",
-          "yaxis": 1
-        },
-        {
-          "alias": "nl-t1-graph01.tst.nan:9100 - vda - lat",
-          "yaxis": 1
-        },
-        {
-          "alias": "nl-t1-graph01.tst.nan:9100 - vda - iops",
-          "yaxis": 2
-        },
-        {
-          "alias": "nl-t1-mon01.tst.nan:9100 - vda - iops",
-          "yaxis": 2
-        }
-      ],
+      "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(node_disk_read_time_seconds_total{instance=~\"$hostname\", job=~\"$job\", device=~\"$device\"}[1m]) / rate(node_disk_reads_completed_total{instance=~\"$hostname\", job=~\"$job\", device=~\"$device\"}[1m]) * 1000000",
-          "hide": false,
-          "instant": false,
-          "intervalFactor": 1,
-          "legendFormat": "{{instance}} - {{device}} ",
+          "expr": "100 - cpu_usage_idle{cpu=\"cpu-total\"}",
+          "interval": "",
+          "legendFormat": "{{host}}",
           "refId": "A"
         }
       ],
@@ -304,20 +129,18 @@
           "fill": true,
           "line": true,
           "op": "gt",
-          "value": 20000,
-          "yaxis": "left"
+          "value": 90
         }
       ],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Read Latency",
+      "title": "_CPU Used",
       "tooltip": {
-        "shared": true,
-        "sort": 1,
+        "shared": false,
+        "sort": 0,
         "value_type": "individual"
       },
-      "transparent": true,
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -328,8 +151,8 @@
       },
       "yaxes": [
         {
-          "decimals": null,
-          "format": "µs",
+          "$$hashKey": "object:96",
+          "format": "percent",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -337,8 +160,8 @@
           "show": true
         },
         {
-          "decimals": null,
-          "format": "iops",
+          "$$hashKey": "object:97",
+          "format": "short",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -352,6 +175,42 @@
       }
     },
     {
+      "alert": {
+        "alertRuleTags": {},
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                90
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "for": "5m",
+        "frequency": "1m",
+        "handler": 1,
+        "message": "Memory used has been above 90% for more than 5 minutes.",
+        "name": "[System] Memory Used alert",
+        "noDataState": "alerting",
+        "notifications": []
+      },
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -364,31 +223,27 @@
         },
         "overrides": []
       },
-      "fill": 0,
+      "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 11,
-        "w": 13,
-        "x": 11,
-        "y": 11
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 1
       },
       "hiddenSeries": false,
       "id": 4,
       "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": false,
-        "show": true,
-        "sort": "avg",
-        "sortDesc": true,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
         "total": false,
-        "values": true
+        "values": false
       },
       "lines": true,
-      "linewidth": 2,
+      "linewidth": 1,
       "nullPointMode": "null",
       "options": {
         "alertThreshold": true
@@ -404,8 +259,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(node_disk_write_time_seconds_total{instance=~\"$hostname\", job=~\"$job\", device=~\"$device\"}[1m]) / rate(node_disk_writes_completed_total{instance=~\"$hostname\", job=~\"$job\", device=~\"$device\"}[1m]) * 1000000",
-          "legendFormat": "{{instance}} - {{device}}",
+          "expr": "mem_used_percent",
+          "interval": "",
+          "legendFormat": "{{host}}",
           "refId": "A"
         }
       ],
@@ -415,20 +271,18 @@
           "fill": true,
           "line": true,
           "op": "gt",
-          "value": 20000,
-          "yaxis": "left"
+          "value": 90
         }
       ],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Write Latency",
+      "title": "_Memory Used",
       "tooltip": {
         "shared": true,
-        "sort": 2,
+        "sort": 0,
         "value_type": "individual"
       },
-      "transparent": true,
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -439,7 +293,8 @@
       },
       "yaxes": [
         {
-          "format": "µs",
+          "$$hashKey": "object:511",
+          "format": "percent",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -447,6 +302,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:512",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -461,6 +317,42 @@
       }
     },
     {
+      "alert": {
+        "alertRuleTags": {},
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                80
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "for": "5m",
+        "frequency": "1m",
+        "handler": 1,
+        "message": "Disk used on / has been above 80% for more than 5 minutes.",
+        "name": "[System] Disk used / alert",
+        "noDataState": "alerting",
+        "notifications": []
+      },
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -473,31 +365,27 @@
         },
         "overrides": []
       },
-      "fill": 0,
+      "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 9,
-        "w": 11,
+        "h": 8,
+        "w": 12,
         "x": 0,
-        "y": 22
+        "y": 9
       },
       "hiddenSeries": false,
-      "id": 13,
+      "id": 6,
       "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": false,
-        "show": true,
-        "sort": "avg",
-        "sortDesc": true,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
         "total": false,
-        "values": true
+        "values": false
       },
       "lines": true,
-      "linewidth": 2,
+      "linewidth": 1,
       "nullPointMode": "null",
       "options": {
         "alertThreshold": true
@@ -513,22 +401,31 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(node_disk_read_bytes_total{instance=~\"$hostname\", job=~\"$job\", device=~\"$device\"}[1m])) by (instance) ",
-          "legendFormat": "{{instance}}",
+          "expr": "disk_used_percent{path=\"/\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{host}}",
           "refId": "A"
         }
       ],
-      "thresholds": [],
+      "thresholds": [
+        {
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 80
+        }
+      ],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Read Troughput",
+      "title": "_Disk used /",
       "tooltip": {
-        "shared": true,
+        "shared": false,
         "sort": 2,
         "value_type": "individual"
       },
-      "transparent": true,
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -539,14 +436,16 @@
       },
       "yaxes": [
         {
-          "format": "Bps",
-          "label": "Reads",
+          "$$hashKey": "object:132",
+          "format": "percent",
+          "label": null,
           "logBase": 1,
           "max": null,
           "min": null,
           "show": true
         },
         {
+          "$$hashKey": "object:133",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -561,6 +460,42 @@
       }
     },
     {
+      "alert": {
+        "alertRuleTags": {},
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                90
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "for": "5m",
+        "frequency": "1m",
+        "handler": 1,
+        "message": "Linear extrapolation predicts disk usage will be above 90% within 12 hours.",
+        "name": "[System] Predicted Disk used / alert",
+        "noDataState": "alerting",
+        "notifications": []
+      },
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -573,31 +508,27 @@
         },
         "overrides": []
       },
-      "fill": 0,
+      "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 9,
-        "w": 13,
-        "x": 11,
-        "y": 22
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 9
       },
       "hiddenSeries": false,
-      "id": 15,
+      "id": 11,
       "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": false,
-        "show": true,
-        "sort": "avg",
-        "sortDesc": true,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
         "total": false,
-        "values": true
+        "values": false
       },
       "lines": true,
-      "linewidth": 2,
+      "linewidth": 1,
       "nullPointMode": "null",
       "options": {
         "alertThreshold": true
@@ -613,22 +544,31 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(node_disk_written_bytes_total{instance=~\"$hostname\", job=~\"$job\", device=~\"$device\"}[1m])) by (instance) ",
-          "legendFormat": "{{instance}}",
+          "expr": "predict_linear(disk_used_percent{path=\"/\"}[1h], 12 * 3600)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{host}}",
           "refId": "A"
         }
       ],
-      "thresholds": [],
+      "thresholds": [
+        {
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 90
+        }
+      ],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Write Troughput",
+      "title": "_Predicted Disk used / in 12 hr",
       "tooltip": {
-        "shared": true,
+        "shared": false,
         "sort": 2,
         "value_type": "individual"
       },
-      "transparent": true,
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -639,14 +579,16 @@
       },
       "yaxes": [
         {
-          "format": "Bps",
-          "label": "Reads",
+          "$$hashKey": "object:132",
+          "format": "percent",
+          "label": null,
           "logBase": 1,
           "max": null,
           "min": null,
           "show": true
         },
         {
+          "$$hashKey": "object:133",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -666,6 +608,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
+      "description": "Bandwidth in SI units, bits per second (bps).\nPositive values are ingress, negative are egress.\nBandwidth is time averaged over a 1 minute window.",
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -673,31 +616,27 @@
         },
         "overrides": []
       },
-      "fill": 0,
+      "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 11,
-        "w": 11,
+        "h": 8,
+        "w": 12,
         "x": 0,
-        "y": 31
+        "y": 17
       },
       "hiddenSeries": false,
       "id": 10,
       "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": false,
-        "show": true,
-        "sort": "avg",
-        "sortDesc": true,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
         "total": false,
-        "values": true
+        "values": false
       },
       "lines": true,
-      "linewidth": 2,
+      "linewidth": 1,
       "nullPointMode": "null",
       "options": {
         "alertThreshold": true
@@ -713,22 +652,28 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(node_disk_read_bytes_total{instance=~\"$hostname\", job=~\"$job\", device=~\"$device\"}[1m]) / rate(node_disk_reads_completed_total{instance=~\"$hostname\", job=~\"$job\", device=~\"$device\"}[1m]) ",
-          "legendFormat": "{{instance}} - {{device}}",
+          "expr": "rate(net_bytes_recv{interface=\"ens5\"}[1m]) * 8 / 60",
+          "interval": "",
+          "legendFormat": "{{host}}",
           "refId": "A"
+        },
+        {
+          "expr": "-rate(net_bytes_sent{interface=\"ens5\"}[1m]) * 8 / 60",
+          "interval": "",
+          "legendFormat": "{{host}}",
+          "refId": "B"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Read Request Size",
+      "title": "_Bandwidth Ingress / Egress",
       "tooltip": {
         "shared": true,
-        "sort": 2,
+        "sort": 0,
         "value_type": "individual"
       },
-      "transparent": true,
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -739,7 +684,8 @@
       },
       "yaxes": [
         {
-          "format": "decbytes",
+          "$$hashKey": "object:44",
+          "format": "bps",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -747,7 +693,8 @@
           "show": true
         },
         {
-          "format": "short",
+          "$$hashKey": "object:45",
+          "format": "kbytes",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -766,6 +713,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
+      "description": "Disk activity, time averaged over a 1 minute window.\nPositive values are disk reads, negative are disk writes.",
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -773,31 +721,27 @@
         },
         "overrides": []
       },
-      "fill": 0,
+      "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 11,
-        "w": 13,
-        "x": 11,
-        "y": 31
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 17
       },
       "hiddenSeries": false,
-      "id": 12,
+      "id": 8,
       "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": false,
-        "show": true,
-        "sort": "avg",
-        "sortDesc": true,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
         "total": false,
-        "values": true
+        "values": false
       },
       "lines": true,
-      "linewidth": 2,
+      "linewidth": 1,
       "nullPointMode": "null",
       "options": {
         "alertThreshold": true
@@ -813,22 +757,30 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(node_disk_written_bytes_total{instance=~\"$hostname\", job=~\"$job\", device=~\"$device\"}[1m]) / rate(node_disk_writes_completed_total{instance=~\"$hostname\", job=~\"$job\", device=~\"$device\"}[1m])",
-          "legendFormat": "{{instance}} - {{device}}",
+          "expr": "rate(diskio_merged_reads{name=\"nvme0n1\"}[1m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{host}}",
           "refId": "A"
+        },
+        {
+          "expr": "-rate(diskio_merged_writes{name=\"nvme0n1\"}[1m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{host}}",
+          "refId": "B"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Write Request Size",
+      "title": "_Disk Reads / Writes",
       "tooltip": {
         "shared": true,
-        "sort": 2,
+        "sort": 0,
         "value_type": "individual"
       },
-      "transparent": true,
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -839,7 +791,168 @@
       },
       "yaxes": [
         {
-          "format": "decbytes",
+          "$$hashKey": "object:75",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:76",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 25
+      },
+      "id": 17,
+      "panels": [],
+      "title": "_Misc Alerts",
+      "type": "row"
+    },
+    {
+      "alert": {
+        "alertRuleTags": {},
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                0
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "for": "5m",
+        "frequency": "1m",
+        "handler": 1,
+        "message": "deadmanssnitch keepalive [bitte]\n\nThis alert serves as a heartbeat for Deadmans' Snitch (https://deadmanssnitch.com).\nIf this heartbeat alert is not already suppressed in PagerDuty, an event suppression rule can be created for it.\nIn the service integration's event rules, create a rule with a suppression action and condition of:\n\nsummary  contains  deadmanssnitch keepalive [bitte]",
+        "name": "[System] Deadmans Snitch (Constant Alert)",
+        "noDataState": "alerting",
+        "notifications": [
+          {
+            "uid": "deadmanssnitch"
+          }
+        ]
+      },
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "description": "[https://deadmanssnitch.com](https://deadmanssnitch.com)\n* This panel should ALWAYS be in alerting state\n* This enables Deadman's Snitch to report when this monitoring server dies",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 26
+      },
+      "hiddenSeries": false,
+      "id": 15,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "1",
+          "interval": "",
+          "legendFormat": "deadmanssnitch",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [
+        {
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 0
+        }
+      ],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "_Deadman's Snitch (Constant Alert)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -861,106 +974,19 @@
       }
     }
   ],
-  "refresh": "5s",
+  "refresh": "1m",
   "schemaVersion": 26,
   "style": "dark",
   "tags": [],
   "templating": {
-    "list": [
-      {
-        "allValue": null,
-        "current": {
-          "selected": false,
-          "text": "All",
-          "value": "$__all"
-        },
-        "datasource": "Prometheus",
-        "definition": "label_values(node_uname_info, instance)",
-        "error": null,
-        "hide": 0,
-        "includeAll": true,
-        "label": "Hostname",
-        "multi": true,
-        "name": "hostname",
-        "options": [],
-        "query": "label_values(node_uname_info, instance)",
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
-      },
-      {
-        "allValue": null,
-        "current": {
-          "selected": false,
-          "text": "All",
-          "value": "$__all"
-        },
-        "datasource": "Prometheus",
-        "definition": "label_values(node_disk_io_now{instance=~\"$hostname\"}, device)",
-        "error": null,
-        "hide": 0,
-        "includeAll": true,
-        "label": "Devicename",
-        "multi": true,
-        "name": "device",
-        "options": [],
-        "query": "label_values(node_disk_io_now{instance=~\"$hostname\"}, device)",
-        "refresh": 1,
-        "regex": "/.*sd|dm|vd.*/",
-        "skipUrlSync": false,
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
-      },
-      {
-        "allValue": null,
-        "current": {
-          "selected": true,
-          "text": [
-            "All"
-          ],
-          "value": [
-            "$__all"
-          ]
-        },
-        "datasource": "Prometheus",
-        "definition": "label_values(node_uname_info, job)",
-        "error": null,
-        "hide": 0,
-        "includeAll": true,
-        "label": "Job",
-        "multi": true,
-        "name": "job",
-        "options": [],
-        "query": "label_values(node_uname_info, job)",
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
-      }
-    ]
+    "list": []
   },
   "time": {
-    "from": "now-30m",
+    "from": "now-24h",
     "to": "now"
   },
   "timepicker": {
     "refresh_intervals": [
-      "5s",
       "10s",
       "30s",
       "1m",
@@ -972,8 +998,8 @@
       "1d"
     ]
   },
-  "timezone": "utc",
-  "title": "Storage I/O Statistics",
-  "uid": "StorageOps",
-  "version": 5
+  "timezone": "",
+  "title": "_System [bitte]",
+  "uid": "NTUvY5JMz",
+  "version": 1
 }

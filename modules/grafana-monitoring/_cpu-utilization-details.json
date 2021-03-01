@@ -70,7 +70,7 @@
         "OS"
       ],
       "targetBlank": true,
-      "title": "OS",
+      "title": "_OS",
       "type": "dashboards"
     }
   ],
@@ -86,7 +86,7 @@
       "id": 79,
       "panels": [],
       "repeat": null,
-      "title": "Dashboard Row",
+      "title": "_Dashboard Row",
       "type": "row"
     },
     {
@@ -184,7 +184,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "$host - Overall CPU Utilization",
+      "title": "_$host - Overall CPU Utilization",
       "tooltip": {
         "msResolution": false,
         "shared": true,
@@ -320,7 +320,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "$host - Current CPU Core Utilization",
+      "title": "_$host - Current CPU Core Utilization",
       "tooltip": {
         "msResolution": false,
         "shared": false,
@@ -371,7 +371,7 @@
       "id": 80,
       "panels": [],
       "repeat": null,
-      "title": "Overall CPU Utilization Details",
+      "title": "_Overall CPU Utilization Details",
       "type": "row"
     },
     {
@@ -444,7 +444,7 @@
         }
       ],
       "thresholds": "70,90",
-      "title": "All Cores - total",
+      "title": "_All Cores - total",
       "type": "singlestat",
       "valueFontSize": "80%",
       "valueMaps": [
@@ -526,7 +526,7 @@
         }
       ],
       "thresholds": "70,90",
-      "title": "All Cores - user",
+      "title": "_All Cores - user",
       "type": "singlestat",
       "valueFontSize": "80%",
       "valueMaps": [
@@ -608,7 +608,7 @@
         }
       ],
       "thresholds": "20,30",
-      "title": "All Cores - system",
+      "title": "_All Cores - system",
       "type": "singlestat",
       "valueFontSize": "80%",
       "valueMaps": [
@@ -690,7 +690,7 @@
         }
       ],
       "thresholds": "20,50",
-      "title": "All Cores - iowait",
+      "title": "_All Cores - iowait",
       "type": "singlestat",
       "valueFontSize": "80%",
       "valueMaps": [
@@ -772,7 +772,7 @@
         }
       ],
       "thresholds": "10,30",
-      "title": "All Cores - steal",
+      "title": "_All Cores - steal",
       "type": "singlestat",
       "valueFontSize": "80%",
       "valueMaps": [
@@ -854,7 +854,7 @@
         }
       ],
       "thresholds": "10,20",
-      "title": "All Cores - other",
+      "title": "_All Cores - other",
       "type": "singlestat",
       "valueFontSize": "80%",
       "valueMaps": [
@@ -887,12 +887,12 @@
           "id": 35,
           "links": [],
           "mode": "markdown",
-          "title": "Per Core CPU Usage",
+          "title": "_Per Core CPU Usage",
           "type": "text"
         }
       ],
       "repeat": null,
-      "title": "CPU Cores Utilization Details",
+      "title": "_CPU Cores Utilization Details",
       "type": "row"
     },
     {
@@ -906,7 +906,7 @@
       "id": 82,
       "panels": [],
       "repeat": "cpu",
-      "title": "Per Core Usage Information",
+      "title": "_Per Core Usage Information",
       "type": "row"
     },
     {
@@ -980,7 +980,7 @@
         }
       ],
       "thresholds": "70,90",
-      "title": "$cpu - total",
+      "title": "_$cpu - total",
       "type": "singlestat",
       "valueFontSize": "80%",
       "valueMaps": [
@@ -1062,7 +1062,7 @@
         }
       ],
       "thresholds": "70,90",
-      "title": "$cpu - user",
+      "title": "_$cpu - user",
       "type": "singlestat",
       "valueFontSize": "80%",
       "valueMaps": [
@@ -1144,7 +1144,7 @@
         }
       ],
       "thresholds": "20,30",
-      "title": "$cpu - system",
+      "title": "_$cpu - system",
       "type": "singlestat",
       "valueFontSize": "80%",
       "valueMaps": [
@@ -1226,7 +1226,7 @@
         }
       ],
       "thresholds": "20,50",
-      "title": "$cpu - iowait",
+      "title": "_$cpu - iowait",
       "type": "singlestat",
       "valueFontSize": "80%",
       "valueMaps": [
@@ -1308,7 +1308,7 @@
         }
       ],
       "thresholds": "10,30",
-      "title": "$cpu - steal",
+      "title": "_$cpu - steal",
       "type": "singlestat",
       "valueFontSize": "80%",
       "valueMaps": [
@@ -1390,7 +1390,7 @@
         }
       ],
       "thresholds": "10,20",
-      "title": "$cpu - other",
+      "title": "_$cpu - other",
       "type": "singlestat",
       "valueFontSize": "80%",
       "valueMaps": [
@@ -1560,7 +1560,7 @@
     "type": "timepicker"
   },
   "timezone": "browser",
-  "title": "CPU Utilization Details",
+  "title": "_CPU Utilization Details",
   "uid": "cpuenway",
   "version": 1
 }

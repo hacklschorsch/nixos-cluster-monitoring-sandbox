@@ -83,7 +83,7 @@
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Drive Status",
+          "title": "_Drive Status",
           "tooltip": {
             "msResolution": true,
             "shared": true,
@@ -173,7 +173,7 @@
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Memory",
+          "title": "_Memory",
           "tooltip": {
             "msResolution": true,
             "shared": true,
@@ -263,7 +263,7 @@
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Filesystem",
+          "title": "_Filesystem",
           "tooltip": {
             "msResolution": true,
             "shared": true,
@@ -299,7 +299,7 @@
       ],
       "repeat": null,
       "showTitle": false,
-      "title": "New row"
+      "title": "_New row"
     },
     {
       "collapse": false,
@@ -385,7 +385,7 @@
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Load",
+          "title": "_Load",
           "tooltip": {
             "msResolution": true,
             "shared": true,
@@ -475,7 +475,7 @@
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "CPU",
+          "title": "_CPU",
           "tooltip": {
             "msResolution": true,
             "shared": true,
@@ -565,7 +565,7 @@
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Storage Connections",
+          "title": "_Storage Connections",
           "tooltip": {
             "msResolution": true,
             "shared": true,
@@ -601,7 +601,7 @@
       ],
       "repeat": null,
       "showTitle": false,
-      "title": "New row"
+      "title": "_New row"
     }
   ],
   "schemaVersion": 12,
@@ -641,6 +641,6 @@
     ]
   },
   "timezone": "utc",
-  "title": "PrivateStorage old (2019)",
+  "title": "_PrivateStorage old (2019)",
   "version": 0
 }

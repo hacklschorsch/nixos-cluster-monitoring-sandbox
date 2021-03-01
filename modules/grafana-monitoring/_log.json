@@ -47,7 +47,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Errors",
+      "title": "_Errors",
       "type": "logs"
     }
   ],
@@ -76,7 +76,7 @@
     ]
   },
   "timezone": "",
-  "title": "Log [bitte]",
+  "title": "_Log [bitte]",
   "uid": "pGgIZSIGz",
   "version": 4
 }
