@@ -37,7 +37,7 @@ in {
 
   "prometheus" = {
     imports = [ ./modules/prometheus.nix
-      ./modules/prometheus-exporters-node.nix
+      ./modules/prometheus-exporters/node.nix
       ./modules/promtail.nix
     ];
     services.private-storage.monitoring.prometheus = {
@@ -49,7 +49,7 @@ in {
   "grafana" = {
     # TODO: The Grafana node has no TLS support yet, add that to the reverse proxy NGINX before deployment
     imports = [ ./modules/grafana.nix
-      ./modules/prometheus-exporters-node.nix
+      ./modules/prometheus-exporters/node.nix
       ./modules/promtail.nix
     ];
     services.private-storage.monitoring.grafana = {
@@ -59,7 +59,7 @@ in {
 
   "loki" = {
     imports = [ ./modules/loki.nix
-      ./modules/prometheus-exporters-node.nix
+      ./modules/prometheus-exporters/node.nix
       ./modules/promtail.nix
     ];
   };
@@ -69,15 +69,15 @@ in {
 
   "node1" = {
     imports = [
-      ./modules/prometheus-exporters-node.nix
+      ./modules/prometheus-exporters/node.nix
       ./modules/promtail.nix
     ];
   };
 
   "node2" = {
     imports = [
-      ./modules/prometheus-exporters-nginx.nix
-      ./modules/prometheus-exporters-node.nix
+      ./modules/prometheus-exporters/nginx.nix
+      ./modules/prometheus-exporters/node.nix
       ./modules/promtail.nix
     ];
     services.nginx.enable = true;
@@ -85,8 +85,8 @@ in {
 
   # "node3" = {
   #   imports = [
-  #     ./modules/prometheus-exporters-tahoe.nix
-  #     ./modules/prometheus-exporters-node.nix
+  #     ./modules/prometheus-exporters/tahoe.nix
+  #     ./modules/prometheus-exporters/node.nix
   #     ./modules/promtail.nix
   #   ];
   #   services.tahoe.enable = true;
