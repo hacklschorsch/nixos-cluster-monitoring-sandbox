@@ -29,14 +29,17 @@
 #   tahoeExporterHostNames = [ ];
 
 let
-   nodeExporterHostNames = [ "node1" "node2" ]; # TODO: make these automatic: list of all nodes importing prometheus-node-exporter, see above
+   nodeExporterHostNames = [ "node1" "node2" "loki" "grafana" "prometheus" ]; # TODO: make these automatic: list of all nodes importing prometheus-node-exporter, see above
    nginxExporterHostNames = [ "node2" ];
 
 in {
   # Monitoring infrastructure
 
   "prometheus" = {
-    imports = [ ./modules/prometheus.nix ];
+    imports = [ ./modules/prometheus.nix
+      ./modules/prometheus-exporters-node.nix
+      ./modules/promtail.nix
+    ];
     services.private-storage.monitoring.prometheus = {
       nodeExporterTargets = nodeExporterHostNames;
       nginxExporterTargets = nginxExporterHostNames;
@@ -45,14 +48,20 @@ in {
 
   "grafana" = {
     # TODO: The Grafana node has no TLS support yet, add that to the reverse proxy NGINX before deployment
-    imports = [ ./modules/grafana.nix ];
+    imports = [ ./modules/grafana.nix
+      ./modules/prometheus-exporters-node.nix
+      ./modules/promtail.nix
+    ];
     services.private-storage.monitoring.grafana = {
       domain = "grafana.grid.private.storage";
     };
   };
 
   "loki" = {
-    imports = [ ./modules/loki.nix ];
+    imports = [ ./modules/loki.nix
+      ./modules/prometheus-exporters-node.nix
+      ./modules/promtail.nix
+    ];
   };
 
 
