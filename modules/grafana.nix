@@ -62,7 +62,7 @@ in {
       # See https://grafana.com/docs/grafana/latest/administration/provisioning/#dashboards
       dashboards = [{
         name = "provisioned";
-        options.path = ./grafana-monitoring;
+        options.path = ./grafana-config;
       }];
     };
 
