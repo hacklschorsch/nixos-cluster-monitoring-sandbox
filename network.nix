@@ -64,6 +64,7 @@ in {
       ./modules/monitoring/server/loki.nix
       ./modules/monitoring/exporters/prometheus/node.nix
       ./modules/monitoring/exporters/promtail.nix
+      ./modules/monitoring/vpn/server.nix
     ];
   };
 
@@ -74,6 +75,7 @@ in {
     imports = [
       ./modules/monitoring/exporters/prometheus/node.nix
       ./modules/monitoring/exporters/promtail.nix
+      ./modules/monitoring/vpn/client.nix
     ];
   };
 
