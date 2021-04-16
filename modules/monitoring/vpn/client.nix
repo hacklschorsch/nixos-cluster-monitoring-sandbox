@@ -14,10 +14,11 @@ in {
     privateKey = "oFCEeXlRI+iU3UOgNsAOUCaLZFTEKAq4OrVAvusZYGo=";
     peers = [
       {
-        allowedIPs = [ "192.168.42.0/24" ];
+        allowedIPs = [ "192.168.42.1/32" ];
         endpoint = cfg.server + ":" + toString cfg.port;
         publicKey = "0fS5azg7bBhCSUocI/r9pNkDMVpnlXmJfu9NV3YfEkU=";
       }
     ];
   };
 }
+
