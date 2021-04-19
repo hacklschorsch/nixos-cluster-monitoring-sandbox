@@ -1,9 +1,8 @@
-# Server section of our Monitoring VPN config
+# Client section of our Monitoring VPN config
 
 #{ config, ip, privateKeyPath }:
 
 let
-  #cfg = config.services.wireguard.monitoring;
   cfg.server = "loki";
   cfg.port = 54321;
   ip = "192.168.42.11";
@@ -22,3 +21,9 @@ in {
   };
 }
 
+
+# just have all config static (no file systems etc)
+# move cfg into global config (like config.privatestorage.monitoring.*)
+# parametrize keys
+#   - (https://wiki.archlinux.org/index.php/WireGuard
+#   -  (wg genkey | tee peer_A.key | wg pubkey > peer_A.pub)

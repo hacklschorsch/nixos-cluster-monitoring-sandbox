@@ -3,7 +3,6 @@
 #{ config, ip, privateKeyPath }:
 
 let
-  #cfg = config.services.wireguard.monitoring;
   cfg.port = 54321;
 
 in {
@@ -24,3 +23,4 @@ in {
     ];
   };
 }
+
